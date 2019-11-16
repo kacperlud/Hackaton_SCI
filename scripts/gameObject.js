@@ -46,4 +46,10 @@ class GameObject
     this.animation.setFramesPerRow(framesPerRow);
     this.animation.setDrawSize(this.size);
   }
+
+  checkBoundries()
+  {
+    if(this.body.position.y-this.size.y/2 > height || this.body.position.x+this.size.x/2 > width || this.body.position.x-this.size.x/2 < 0) return true;
+    else return false;
+  }
 }

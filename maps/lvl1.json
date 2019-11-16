@@ -4,18 +4,6 @@
     {
       "type": "block",
       "posX": 450,
-      "posY": 590,
-      "textureName":"test",
-      "width": 900,
-      "height": 20,
-      "options":
-      {
-        "isStatic": true
-      }
-    },
-    {
-      "type": "block",
-      "posX": 450,
       "posY": 465,
       "textureName":"grinch",
       "width": 192,
@@ -24,6 +12,34 @@
       {
         "isStatic": true
       }
+    },
+    {
+      "type": "block",
+      "posX": 750,
+      "posY": 345,
+      "textureName":"snowman",
+      "width": 96,
+      "height": 135,
+      "options":
+      {
+        "isStatic": true
+      }
+    },
+    {
+      "type": "block",
+      "posX": 250,
+      "posY": 375,
+      "textureName":"boxy",
+      "width": 91,
+      "height": 76,
+      "options":
+      {
+        "isStatic": true
+      }
+    },
+    {
+      "type":"background",
+      "name":"domek"
     }
   ]
 }

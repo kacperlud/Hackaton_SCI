@@ -5,12 +5,16 @@ let textureData;
 let camera;
 let player;
 let grinch;
+let backgroundImage=null;
 function preload()
 {
   textures["test"]=loadImage("graphics/klatki.png");
   textures["grinch"]=loadImage("graphics/grinch.png");
-  textures["boxy"]=loadImage("graphics/boxy3.png");
+  textures["snowman"]=loadImage("graphics/snowman.png");
+  textures["boxy"]=loadImage("graphics/boxy4.png");
   textures["birb"]=loadImage("graphics/birb.png");
+  textures["snow"]=loadImage("graphics/snow.png");
+  textures["domek"]=loadImage("graphics/domek.png");
   textureData = loadJSON("graphics/textures.json");
 }
 function setup()
@@ -26,6 +30,7 @@ function setup()
 function draw()
 {
   background(51);
+  if(backgroundImage!=null)image(backgroundImage,width/2,height/2,width,height);
   game.updateLogic();
   game.updateDraw();
 }
