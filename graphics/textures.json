@@ -5,25 +5,43 @@
       "name": "test",
       "txWidth": 384,
       "txHeight": 540,
-      "framesPerRow": 5
+      "framesPerRow": 5,
+      "interval": 1
     },
     {
       "name": "grinch",
       "txWidth": 384,
       "txHeight": 540,
-      "framesPerRow": 5
+      "framesPerRow": 5,
+      "interval": 1
     },
     {
       "name": "boxy",
       "txWidth": 455,
       "txHeight": 384,
-      "framesPerRow": 2
+      "framesPerRow": 2,
+      "interval": 200
     },
     {
       "name": "birb",
       "txWidth": 188,
       "txHeight": 142,
-      "framesPerRow": 14
+      "framesPerRow": 14,
+      "interval": 1
+    },
+    {
+      "name": "snow",
+      "txWidth": 128,
+      "txHeight": 128,
+      "framesPerRow": 1,
+      "interval": 1
+    },
+    {
+      "name": "snowman",
+      "txWidth": 319,
+      "txHeight": 538,
+      "framesPerRow": 1,
+      "interval": 1
     }
   ]
 }

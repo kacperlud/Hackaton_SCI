@@ -17,14 +17,26 @@ class Game
   updateLogic()
   {
     this.spawnSnowBalls();
-    for(let obj of this.GameObjects)
+    this.spawnRandomObject();
+    for(let i=this.GameObjects.length-1;i>=0;i--)
     {
-      obj.updateLogic();
+      this.GameObjects[i].updateLogic();
+      if(this.GameObjects[i].checkBoundries())
+      {
+        this.GameObjects.splice(i,1);
+      }
     }
-    for(let obj of this.snowBalls)
+    for(let i=this.snowBalls.length-1;i>=0;i--)
     {
-      obj.updateLogic();
-      if(Matter.Detector.canCollide(player, obj)){console.log("aaa");this.World.remove(obj);}
+      this.snowBalls[i].updateLogic();
+      let mouse = createVector(mouseX,mouseY);
+      let pos = createVector(this.snowBalls[i].body.position.x,this.snowBalls[i].body.position.y);
+      let diff = pos.sub(mouse).setMag(0.005);
+      Matter.Body.applyForce(this.snowBalls[i].body, this.snowBalls[i].body.position, diff);
+      if(this.snowBalls[i].checkBoundries())
+      {
+        this.snowBalls.splice(i,1);
+      }
     }
   }
   updateDraw()
@@ -64,7 +76,7 @@ class Game
     for(let elem of jsonSource.data)
     {
       let tmp = new GameObject(elem.width,elem.height);
-      if(elem.type="block")
+      if(elem.type=="block")
       {
         tmp.body = game.Bodies.rectangle(elem.posX,elem.posY,
                                          elem.width,elem.height,
@@ -74,7 +86,12 @@ class Game
                           textureData.data[txConfIndex].txHeight,
                           textures[elem.textureName],
                           textureData.data[txConfIndex].framesPerRow);
+        tmp.updateInterval = elem.interval;
                           //console.log(textureData.data[txConfIndex].framesPerRow);
+      }
+      else if(elem.type="background")
+      {
+        backgroundImage = textures[elem.name];
       }
       if(elem.textureName=="grinch") player = tmp;
       game.World.add(game.Engine.world,[tmp.body]);
@@ -84,15 +101,27 @@ class Game
 
   spawnSnowBalls()
   {
-    for(let i=0;i<1;i++)
+    for(let i=0;i<2;i++)
     {
+      if(this.snowBalls.length>120) return;
       let r = Math.floor(Math.random() * (35 - 15 + 1)) + 15;
       let ball  = new GameObject(r,r);
       ball.body = this.Bodies.circle(Math.floor(Math.random() * (width-r - r + 1)) + r,0,r);
-      ball.initAnimation(384,540,textures["test"],5);
+      ball.initAnimation(128,128,textures["snow"],1);
+      Matter.Body.applyForce(ball.body, ball.body.position, {x:0,y:0.2,z:0});
       this.snowBalls.push(ball);
       game.World.add(game.Engine.world,[ball.body]);
     }
+  }
+
+  spawnRandomObject()
+  {
+    // if(this.GameObjects.length>1) return;
+    // let ball  = new GameObject(227*0.66,192*0.66);
+    // ball.body = this.Bodies.circle(Math.floor(Math.random() * (width+1)),0,227*0.66,192*0.66);
+    // ball.initAnimation(455,384,textures["boxy"],3);
+    // this.GameObjects.push(ball);
+    // game.World.add(game.Engine.world,[ball.body]);
   }
 }
 /*
