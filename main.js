@@ -3,6 +3,8 @@ let testimg;
 let textures = [];
 let textureData;
 let camera;
+let player;
+let grinch;
 function preload()
 {
   textures["test"]=loadImage("graphics/klatki.png");
@@ -24,8 +26,6 @@ function setup()
 function draw()
 {
   background(51);
-  //camera.follow(game.GameObjects[0].body);
-  test();
   game.updateLogic();
   game.updateDraw();
 }
@@ -40,21 +40,4 @@ Array.prototype.findObjectWithAttribute = function(attr, value)
         }
     }
     return -1;
-}
-
-function test()
-{
-  if (keyIsDown(LEFT_ARROW)) {
-    Matter.Body.setVelocity(game.GameObjects[0].body, {x:-5,y:0});
-  }
-
-  if (keyIsDown(RIGHT_ARROW)) {
-    Matter.Body.setVelocity(game.GameObjects[0].body, {x:5,y:0});
-  }
-
-  if (keyIsDown(UP_ARROW)) {
-  }
-
-  if (keyIsDown(DOWN_ARROW)) {
-  }
 }
