@@ -77,7 +77,7 @@ class Game
     for(let elem of jsonSource.data)
     {
       let tmp = new GameObject(elem.width,elem.height);
-      if(elem.type="block")
+      if(elem.type=="block")
       {
         tmp.body = game.Bodies.rectangle(elem.posX,elem.posY,
                                          elem.width,elem.height,
@@ -89,6 +89,10 @@ class Game
                           textureData.data[txConfIndex].framesPerRow);
         tmp.updateInterval = elem.interval;
                           //console.log(textureData.data[txConfIndex].framesPerRow);
+      }
+      else if(elem.type="background")
+      {
+        backgroundImage = textures[elem.name];
       }
       if(elem.textureName=="grinch") player = tmp;
       game.World.add(game.Engine.world,[tmp.body]);

@@ -36,6 +36,10 @@
       {
         "isStatic": true
       }
+    },
+    {
+      "type":"background",
+      "name":"domek"
     }
   ]
 }
