@@ -13,10 +13,10 @@ function preload()
 }
 function setup()
 {
-  camera = new Camera();
   rectMode(CENTER);
   imageMode(CENTER);
   createCanvas(900,600);
+  camera = new Camera();
   game = new Game();
   game.play();
 }
@@ -26,7 +26,6 @@ function draw()
   background(51);
   //camera.follow(game.GameObjects[0].body);
   test();
-  camera.update();
   game.updateLogic();
   game.updateDraw();
 }
@@ -47,19 +46,15 @@ function test()
 {
   if (keyIsDown(LEFT_ARROW)) {
     Matter.Body.setVelocity(game.GameObjects[0].body, {x:-5,y:0});
-    camera.move(createVector(5,0));
   }
 
   if (keyIsDown(RIGHT_ARROW)) {
     Matter.Body.setVelocity(game.GameObjects[0].body, {x:5,y:0});
-    camera.move(createVector(-5,0));
   }
 
   if (keyIsDown(UP_ARROW)) {
-    camera.move(createVector(0,5));
   }
 
   if (keyIsDown(DOWN_ARROW)) {
-    camera.move(createVector(0,-5));
   }
 }
