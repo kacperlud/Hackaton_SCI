@@ -24,6 +24,12 @@
       "txWidth": 188,
       "txHeight": 142,
       "framesPerRow": 14
+    },
+    {
+      "name": "snow",
+      "txWidth": 128,
+      "txHeight": 128,
+      "framesPerRow": 1
     }
   ]
 }

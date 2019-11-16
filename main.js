@@ -11,6 +11,7 @@ function preload()
   textures["grinch"]=loadImage("graphics/grinch.png");
   textures["boxy"]=loadImage("graphics/boxy3.png");
   textures["birb"]=loadImage("graphics/birb.png");
+  textures["snow"]=loadImage("graphics/snow.png");
   textureData = loadJSON("graphics/textures.json");
 }
 function setup()
