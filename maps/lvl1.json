@@ -1,0 +1,37 @@
+{
+  "data":
+  [
+    {
+      "type": "block",
+      "posX": 450,
+      "posY": 100,
+      "textureName":"birb",
+      "width": 200,
+      "height": 200,
+      "options":
+      {
+        "friction": 1
+      }
+    },
+    {
+      "type": "block",
+      "posX": 465,
+      "posY": 200,
+      "textureName":"boxy",
+      "width": 100,
+      "height": 100
+    },
+    {
+      "type": "block",
+      "posX": 450,
+      "posY": 500,
+      "textureName":"test",
+      "width": 900,
+      "height": 100,
+      "options":
+      {
+        "isStatic": true
+      }
+    }
+  ]
+}

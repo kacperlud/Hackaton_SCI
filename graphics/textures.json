@@ -1,0 +1,29 @@
+{
+  "data":
+  [
+    {
+      "name": "test",
+      "txWidth": 384,
+      "txHeight": 540,
+      "framesPerRow": 5
+    },
+    {
+      "name": "grinch",
+      "txWidth": 384,
+      "txHeight": 540,
+      "framesPerRow": 5
+    },
+    {
+      "name": "boxy",
+      "txWidth": 455,
+      "txHeight": 384,
+      "framesPerRow": 2
+    },
+    {
+      "name": "birb",
+      "txWidth": 188,
+      "txHeight": 142,
+      "framesPerRow": 14
+    }
+  ]
+}

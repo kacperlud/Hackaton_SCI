@@ -1,28 +1,65 @@
-// module aliases
-var Engine = Matter.Engine,
-    Render = Matter.Render,
-    World = Matter.World,
-    Bodies = Matter.Bodies;
+let game;
+let testimg;
+let textures = [];
+let textureData;
+let camera;
+function preload()
+{
+  textures["test"]=loadImage("graphics/klatki.png");
+  textures["grinch"]=loadImage("graphics/grinch.png");
+  textures["boxy"]=loadImage("graphics/boxy3.png");
+  textures["birb"]=loadImage("graphics/birb.png");
+  textureData = loadJSON("graphics/textures.json");
+}
+function setup()
+{
+  camera = new Camera();
+  rectMode(CENTER);
+  imageMode(CENTER);
+  createCanvas(900,600);
+  game = new Game();
+  game.play();
+}
 
-// create an engine
-var engine = Engine.create();
+function draw()
+{
+  background(51);
+  //camera.follow(game.GameObjects[0].body);
+  test();
+  camera.update();
+  game.updateLogic();
+  game.updateDraw();
+}
+//https://code.tutsplus.com/tutorials/getting-started-with-matterjs-engine-and-world--cms-28832
+Array.prototype.findObjectWithAttribute = function(attr, value)
+{
+    for(var i = 0; i < this.length; i += 1)
+    {
+        if(this[i][attr] === value)
+        {
+            return i;
+        }
+    }
+    return -1;
+}
 
-// create a renderer
-var render = Render.create({
-    element: document.body,
-    engine: engine
-});
+function test()
+{
+  if (keyIsDown(LEFT_ARROW)) {
+    Matter.Body.setVelocity(game.GameObjects[0].body, {x:-5,y:0});
+    camera.move(createVector(5,0));
+  }
 
-// create two boxes and a ground
-var boxA = Bodies.rectangle(400, 200, 80, 80);
-var boxB = Bodies.rectangle(450, 50, 80, 80);
-var ground = Bodies.rectangle(400, 610, 810, 60, { isStatic: true });
+  if (keyIsDown(RIGHT_ARROW)) {
+    Matter.Body.setVelocity(game.GameObjects[0].body, {x:5,y:0});
+    camera.move(createVector(-5,0));
+  }
 
-// add all of the bodies to the world
-World.add(engine.world, [boxA, boxB, ground]);
+  if (keyIsDown(UP_ARROW)) {
+    camera.move(createVector(0,5));
+  }
 
-// run the engine
-Engine.run(engine);
-
-// run the renderer
-Render.run(render);
+  if (keyIsDown(DOWN_ARROW)) {
+    camera.move(createVector(0,-5));
+  }
+}
