@@ -87,6 +87,7 @@ class Game
                           textureData.data[txConfIndex].txHeight,
                           textures[elem.textureName],
                           textureData.data[txConfIndex].framesPerRow);
+        tmp.updateInterval = elem.interval;
                           //console.log(textureData.data[txConfIndex].framesPerRow);
       }
       if(elem.textureName=="grinch") player = tmp;
@@ -112,12 +113,12 @@ class Game
 
   spawnRandomObject()
   {
-    if(this.GameObjects.length>1) return;
-    let ball  = new GameObject(227*0.66,192*0.66);
-    ball.body = this.Bodies.circle(Math.floor(Math.random() * (width+1)),0,227*0.66,192*0.66);
-    ball.initAnimation(455,384,textures["boxy"],3);
-    this.GameObjects.push(ball);
-    game.World.add(game.Engine.world,[ball.body]);
+    // if(this.GameObjects.length>1) return;
+    // let ball  = new GameObject(227*0.66,192*0.66);
+    // ball.body = this.Bodies.circle(Math.floor(Math.random() * (width+1)),0,227*0.66,192*0.66);
+    // ball.initAnimation(455,384,textures["boxy"],3);
+    // this.GameObjects.push(ball);
+    // game.World.add(game.Engine.world,[ball.body]);
   }
 }
 /*
