@@ -3,6 +3,14 @@ var playbutton;
 var levelbutton;
 var canvaswidth = 900;
 var canvasheight = 600;
+//////////////////////
+let game;
+let testimg;
+let textures = [];
+let textureData;
+let camera;
+let player;
+let grinch;
 
 function playscreen()
 {
@@ -55,7 +63,7 @@ function levels()
       levelbutton.textFont = "Montserrat";
 
       levelbutton.draw();
-      
+
       levelbutton.onOutside = function()
       {
         this.color = "#c82d2d";
@@ -65,12 +73,20 @@ function levels()
         this.color = "#FFFFFF";
         this.textColor = "#000000";
       }
-      levelbutton.onPress = function()
+      levelbutton[0][0].onPress = function()
       {
         niepotrzebnazmienna++;
       }
     }
   }
+}
+function preload()
+{
+  textures["test"]=loadImage("graphics/klatki.png");
+  textures["grinch"]=loadImage("graphics/grinch.png");
+  textures["boxy"]=loadImage("graphics/boxy3.png");
+  textures["birb"]=loadImage("graphics/birb.png");
+  textureData = loadJSON("graphics/textures.json");
 }
 
 function setup()
@@ -78,6 +94,12 @@ function setup()
   createCanvas(canvaswidth,canvasheight);
   playscreen();
 
+  rectMode(CENTER);
+  imageMode(CENTER);
+  createCanvas(900,600);
+  camera = new Camera();
+  game = new Game();
+  game.play();
 }
 
 function draw()
@@ -92,5 +114,22 @@ function draw()
     // levelbutton.draw();
       levels();
   }
-
+  else if (niepotrzebnazmienna == 2)
+  {
+    background(51);
+    game.updateLogic();
+    game.updateDraw();
+  }
+}
+//https://code.tutsplus.com/tutorials/getting-started-with-matterjs-engine-and-world--cms-28832
+Array.prototype.findObjectWithAttribute = function(attr, value)
+{
+    for(var i = 0; i < this.length; i += 1)
+    {
+        if(this[i][attr] === value)
+        {
+            return i;
+        }
+    }
+    return -1;
 }

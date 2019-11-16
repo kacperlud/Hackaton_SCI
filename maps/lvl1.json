@@ -1,0 +1,29 @@
+{
+  "data":
+  [
+    {
+      "type": "block",
+      "posX": 450,
+      "posY": 590,
+      "textureName":"test",
+      "width": 900,
+      "height": 20,
+      "options":
+      {
+        "isStatic": true
+      }
+    },
+    {
+      "type": "block",
+      "posX": 450,
+      "posY": 465,
+      "textureName":"grinch",
+      "width": 192,
+      "height": 270,
+      "options":
+      {
+        "isStatic": true
+      }
+    }
+  ]
+}
