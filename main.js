@@ -1,28 +1,96 @@
-// module aliases
-var Engine = Matter.Engine,
-    Render = Matter.Render,
-    World = Matter.World,
-    Bodies = Matter.Bodies;
+var niepotrzebnazmienna = 0;
+var playbutton;
+var levelbutton;
+var canvaswidth = 900;
+var canvasheight = 600;
 
-// create an engine
-var engine = Engine.create();
+function playscreen()
+{
+  var playbuttonwidth = 200;
+  var playbuttonheight = 50;
 
-// create a renderer
-var render = Render.create({
-    element: document.body,
-    engine: engine
-});
+  playbutton = new Clickable();
+  playbutton.resize(playbuttonwidth,playbuttonheight);
+  playbutton.cornerRadius = 5;
+  playbutton.locate(canvaswidth/2 - playbuttonwidth/2,canvasheight/2 - playbuttonheight/2);
+  playbutton.color = "#c82d2d";
+  playbutton.text = "Play";
+  playbutton.textSize = 30;
+  playbutton.textFont = "Montserrat";
 
-// create two boxes and a ground
-var boxA = Bodies.rectangle(400, 200, 80, 80);
-var boxB = Bodies.rectangle(450, 50, 80, 80);
-var ground = Bodies.rectangle(400, 610, 810, 60, { isStatic: true });
+  playbutton.onOutside = function()
+  {
+    this.color = "#c82d2d";
+  }
+  playbutton.onHover = function()
+  {
+    this.color = "#FFFFFF";
+    this.textColor = "#000000";
+  }
+  playbutton.onPress = function()
+  {
+    niepotrzebnazmienna++;
+  }
+}
 
-// add all of the bodies to the world
-World.add(engine.world, [boxA, boxB, ground]);
+function levels()
+{
+  var n=1;
+  for (var i = 0; i < 4; i++)
+  {
+    for (var j = 0; j < 6; j++)
+    {
+      var levelbuttonwidth = 100;
+      var levelbuttonheight = 100;
 
-// run the engine
-Engine.run(engine);
+      let levelbutton = new Clickable();
 
-// run the renderer
-Render.run(render);
+      levelbutton.resize(levelbuttonwidth,levelbuttonheight);
+      levelbutton.cornerRadius = 5;
+      levelbutton.locate(j * levelbuttonwidth + 40 * j + 50, i * levelbuttonheight + 40 * i + 40);
+      levelbutton.color = "#c82d2d";
+      levelbutton.text = "Level " + n;
+      n++;
+      levelbutton.textSize = 30;
+      levelbutton.textFont = "Montserrat";
+
+      levelbutton.draw();
+      
+      levelbutton.onOutside = function()
+      {
+        this.color = "#c82d2d";
+      }
+      levelbutton.onHover = function()
+      {
+        this.color = "#FFFFFF";
+        this.textColor = "#000000";
+      }
+      levelbutton.onPress = function()
+      {
+        niepotrzebnazmienna++;
+      }
+    }
+  }
+}
+
+function setup()
+{
+  createCanvas(canvaswidth,canvasheight);
+  playscreen();
+
+}
+
+function draw()
+{
+  background(49, 163, 76);
+  if (niepotrzebnazmienna == 0)
+  {
+    playbutton.draw();
+  }
+  else if (niepotrzebnazmienna == 1)
+  {
+    // levelbutton.draw();
+      levels();
+  }
+
+}
